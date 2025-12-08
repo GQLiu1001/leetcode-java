@@ -16,14 +16,19 @@ class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
         Map<String, List<String>> map = new HashMap<>();
         for (String str : strs) {
-            char[] arr = str.toCharArray();
-            Arrays.sort(arr);
-            String key = new String(arr); // 排序后作为 key
-            map.computeIfAbsent(key, k -> new ArrayList<>()).add(str);
-
+            char[] c = str.toCharArray();
+            Arrays.sort(c);
+            String key = new String(c);
+            if (map.containsKey(key)) {
+                map.get(key).add(str);
+            } else {
+                List<String> list = new ArrayList<>();
+                list.add(str); // 必须添加当前字符串
+                map.put(key, list);
+            }
         }
+
         return new ArrayList<>(map.values());
     }
 }
 // @lc code=end
-
