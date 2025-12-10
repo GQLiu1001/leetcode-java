@@ -16,16 +16,18 @@ class Solution {
             set.add(nums[i]);
         }
         int res = 0;
-        for (Integer i : set) {
-            if (set.contains(i-1)) {
+        for (Integer integer : set) {
+            if (set.contains(integer - 1)) {
                 continue;
             }
             int len = 1;
-            while (set.contains(i+1)) {
-                len++;
-                i++;
+            
+            while (set.contains(integer + 1)) {
+                integer++;
+                len ++;
             }
             res = Math.max(len, res);
+            
         }
         return res;
     }

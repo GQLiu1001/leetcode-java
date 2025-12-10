@@ -15,11 +15,12 @@ import java.util.Map;
 class Solution {
     public List<List<String>> groupAnagrams(String[] strs) {
         Map<String,List<String>> map = new HashMap<>();
-        for (String str : strs) {
-            char[] c = str.toCharArray();
+        for (String s : strs) {
+            char[] c = s.toCharArray();
             Arrays.sort(c);
             String key = new String(c);
-            map.computeIfAbsent(key, k ->new ArrayList<>()).add(str);
+            if (!map.containsKey(key)) map.put(key, new ArrayList<>());
+            map.get(key).add(s);
         }
         return new ArrayList<>(map.values());
     }
