@@ -7,19 +7,19 @@
 // @lc code=start
 class Solution {
     public void moveZeroes(int[] nums) {
-        int len = nums.length;
-        var index = 0;
-        var cursor = 0;
-        while (cursor < len) {
-            if (nums[cursor] != 0) {
-                var temp = 0;
-                temp = nums[index];
-                nums[index] = nums[cursor];
-                nums[cursor] = temp;
-                index ++;
-            }
-            cursor ++;
+    int left = 0;
+    int right = 0;
+    int len = nums.length;
+    while (right < len) {
+        if (nums[right] != 0) {
+            var temp = 0;
+            temp = nums[right];
+            nums[right] = nums[left];
+            nums[left] = temp;
+            left++;
         }
+        right ++;
+    }
     }
 }
 // @lc code=end

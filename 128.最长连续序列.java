@@ -11,9 +11,9 @@ import java.util.Set;
 
 class Solution {
     public int longestConsecutive(int[] nums) {
-        Set<Integer> set = new HashSet<>();
-        for (int i = 0; i < nums.length; i++) {
-            set.add(nums[i]);
+        Set<Integer> set =  new HashSet<>();
+        for (Integer integer : nums) {
+            set.add(integer);
         }
         int res = 0;
         for (Integer integer : set) {
@@ -21,13 +21,12 @@ class Solution {
                 continue;
             }
             int len = 1;
-            
             while (set.contains(integer + 1)) {
-                integer++;
                 len ++;
+                integer ++;
+                
             }
             res = Math.max(len, res);
-            
         }
         return res;
     }
